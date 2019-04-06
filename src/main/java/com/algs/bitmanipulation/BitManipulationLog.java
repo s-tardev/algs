@@ -1,7 +1,5 @@
 package com.algs.bitmanipulation;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,15 +8,20 @@ import org.springframework.stereotype.Component;
  * I think this is a pretty dumb solution.
  */
 @Component
-class BitManipulationString {
+class BitManipulationLog {
 
     public static int countOneBits(int number) {
 
-        return Integer.toBinaryString(number)
-                .chars()
-                .filter(ch -> ch == '1')
-                .map(e -> 1)
-                .sum();
+        if (number == 0) {
+            return 0;
+        }
 
+        int power = (int) (Math.log(number) / Math.log(2));
+
+        if (number % 2 == 0) {
+            return power;
+        }
+
+        return power + 1;
     }
 }
